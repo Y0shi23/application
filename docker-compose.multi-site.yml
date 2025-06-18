@@ -1,0 +1,144 @@
+services:
+  # Nginxリバースプロキシ
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+      - backend
+      - frontend2
+      - backend2
+    networks:
+      - mynetwork
+
+  # mysite7用のフロントエンド（既存）
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/app:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - mynetwork
+    # ポートをexposeにして外部からの直接アクセスを防ぐ
+    expose:
+      - "3000"
+
+  # mysite7用のバックエンド（既存）
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/app:/app/src
+      - ./backend/app/uploads:/app/uploads
+    environment:
+      - DB_HOST=db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - SERVER_PORT=8080
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - mynetwork
+    expose:
+      - "8080"
+
+  # mysite2用のフロントエンド（新規）
+  frontend2:
+    build:
+      context: ./frontend2
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend2/app:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - PORT=3001
+    networks:
+      - mynetwork
+    expose:
+      - "3001"
+
+  # mysite2用のバックエンド（新規）
+  backend2:
+    build:
+      context: ./backend2
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend2/app:/app/src
+      - ./backend2/app/uploads:/app/uploads
+    environment:
+      - DB_HOST=db2
+      - DB_USER=${DB_USER_2}
+      - DB_PASSWORD=${DB_PASSWORD_2}
+      - DB_NAME=${DB_NAME_2}
+      - DB_PORT=${DB_PORT}
+      - JWT_SECRET=${JWT_SECRET_2}
+      - SERVER_PORT=8081
+    depends_on:
+      db2:
+        condition: service_healthy
+    networks:
+      - mynetwork
+    expose:
+      - "8081"
+
+  # mysite7用のデータベース（既存）
+  db:
+    image: postgres:16.4
+    volumes:
+      - ./PostgreSQL:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+    networks:
+      - mynetwork
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # mysite2用のデータベース（新規）
+  db2:
+    image: postgres:16.4
+    volumes:
+      - ./PostgreSQL2:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST: ${DB_HOST_2}
+      POSTGRES_DB: ${DB_NAME_2}
+      POSTGRES_USER: ${DB_USER_2}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_2}
+      DB_PORT: ${DB_PORT}
+    networks:
+      - mynetwork
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER_2} -d ${DB_NAME_2}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+networks:
+  mynetwork:
+    driver: bridge 
