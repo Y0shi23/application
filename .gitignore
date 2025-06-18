@@ -55,3 +55,6 @@ venv/
 
 # PostgreSQL data
 PostgreSQL/data/ 
+
+# nginx
+nginx/ssl/
