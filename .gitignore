@@ -60,6 +60,7 @@ PostgreSQL/pg_*/
 PostgreSQL/postmaster.pid
 PostgreSQL/postmaster.opts
 PostgreSQL/*.auto.conf
+PostgreSQL/data/
 
 # nginx
 nginx/ssl/
