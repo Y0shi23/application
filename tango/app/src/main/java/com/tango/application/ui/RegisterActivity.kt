@@ -2,6 +2,8 @@ package com.tango.application.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -33,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         
         setupClickListeners()
+        setupRealtimeValidation()
     }
     
     private fun setupClickListeners() {
@@ -42,6 +45,64 @@ class RegisterActivity : AppCompatActivity() {
         
         binding.tvLoginLink.setOnClickListener {
             navigateToLogin()
+        }
+    }
+    
+    private fun setupRealtimeValidation() {
+        // パスワードフィールドのリアルタイムチェック
+        binding.etPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                validatePasswordRealtime()
+            }
+        })
+        
+        // パスワード確認フィールドのリアルタイムチェック
+        binding.etConfirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                validatePasswordMatch()
+            }
+        })
+    }
+    
+    private fun validatePasswordRealtime() {
+        val password = binding.etPassword.text.toString()
+        
+        android.util.Log.d("RegisterValidation", "validatePasswordRealtime: password='$password' (length=${password.length})")
+        
+        if (password.isNotEmpty() && password.length < 6) {
+            android.util.Log.d("RegisterValidation", "パスワードが6文字未満です")
+            binding.tilPassword.error = "パスワードは6文字以上で入力してください"
+        } else {
+            android.util.Log.d("RegisterValidation", "パスワードの長さは適切です")
+            binding.tilPassword.error = null
+        }
+        
+        // 確認パスワードが入力済みの場合は一致チェックも実行
+        if (binding.etConfirmPassword.text?.isNotEmpty() == true) {
+            validatePasswordMatch()
+        }
+    }
+    
+    private fun validatePasswordMatch() {
+        val password = binding.etPassword.text.toString()
+        val confirmPassword = binding.etConfirmPassword.text.toString()
+        
+        android.util.Log.d("RegisterValidation", "validatePasswordMatch: password='$password', confirmPassword='$confirmPassword'")
+        
+        if (confirmPassword.isNotEmpty()) {
+            if (password != confirmPassword) {
+                android.util.Log.d("RegisterValidation", "パスワードが一致しません")
+                binding.tilConfirmPassword.error = "パスワードが一致しません"
+            } else {
+                android.util.Log.d("RegisterValidation", "パスワードが一致しました")
+                binding.tilConfirmPassword.error = null
+            }
+        } else {
+            binding.tilConfirmPassword.error = null
         }
     }
     

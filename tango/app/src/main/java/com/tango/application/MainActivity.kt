@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.tango.application.databinding.ActivityMainBinding
 import com.tango.application.ui.LoginActivity
+import com.tango.application.ui.NumericPasswordActivity
 import com.tango.application.utils.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
@@ -66,7 +67,9 @@ class MainActivity : AppCompatActivity() {
         }
         
         binding.cardSettings.setOnClickListener {
-            Toast.makeText(this, "設定機能は準備中です", Toast.LENGTH_SHORT).show()
+            // 数字パスワード設定画面へ遷移
+            val intent = Intent(this, NumericPasswordActivity::class.java)
+            startActivity(intent)
         }
         
         binding.cardProfile.setOnClickListener {

@@ -32,6 +32,11 @@
             android:name=".ui.RegisterActivity"
             android:exported="false" />
         
+        <!-- Numeric Password Activity -->
+        <activity
+            android:name=".ui.NumericPasswordActivity"
+            android:exported="false" />
+        
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
