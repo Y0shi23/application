@@ -40,8 +40,7 @@ class LoginActivity : AppCompatActivity() {
         }
         
         binding.tvRegisterLink.setOnClickListener {
-            // TODO: 登録画面への遷移を実装
-            Toast.makeText(this, "新規登録機能は後で実装します", Toast.LENGTH_SHORT).show()
+            navigateToRegister()
         }
         
         binding.tvForgotPassword.setOnClickListener {
@@ -156,5 +155,10 @@ class LoginActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
+    }
+    
+    private fun navigateToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 } 

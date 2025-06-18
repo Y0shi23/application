@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:padding="32dp"
         android:gravity="center"
-        tools:context=".ui.LoginActivity">
+        tools:context=".ui.RegisterActivity">
 
         <!-- App Icon -->
         <View
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ログイン"
+            android:text="新規登録"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"
@@ -38,13 +38,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="アカウントにログインして学習を続ける"
+            android:text="新しいアカウントを作成して学習を開始"
             android:textSize="16sp"
             android:textColor="@color/text_secondary"
             android:layout_gravity="center"
             android:layout_marginBottom="48dp" />
 
-        <!-- Login Form -->
+        <!-- Register Form -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,6 +85,39 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Email Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="メールアドレス"
+                android:textSize="14sp"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Email Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="メールアドレスを入力"
+                app:startIconDrawable="@drawable/ic_email"
+                app:endIconMode="clear_text"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/text_secondary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:padding="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Password Label -->
             <TextView
                 android:layout_width="wrap_content"
@@ -99,8 +132,8 @@
                 android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="パスワードを入力"
+                android:layout_marginBottom="24dp"
+                android:hint="パスワードを入力（6文字以上）"
                 app:startIconDrawable="@drawable/ic_lock"
                 app:endIconMode="password_toggle"
                 app:boxStrokeColor="@color/primary_color"
@@ -118,36 +151,71 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Remember Me Checkbox -->
-            <CheckBox
-                android:id="@+id/cbRememberMe"
+            <!-- Confirm Password Label -->
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ログイン状態を保持"
+                android:text="パスワード確認"
                 android:textSize="14sp"
-                android:textColor="@color/text_secondary"
-                android:buttonTint="@color/primary_color"
+                android:textColor="@color/text_primary"
                 android:layout_marginBottom="8dp" />
 
-            <!-- Forgot Password Link -->
-            <TextView
-                android:id="@+id/tvForgotPassword"
-                android:layout_width="wrap_content"
+            <!-- Confirm Password Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirmPassword"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="パスワードを忘れた場合"
-                android:textSize="14sp"
-                android:textColor="@color/primary_color"
-                android:background="?android:attr/selectableItemBackground"
-                android:padding="8dp"
-                android:layout_marginBottom="32dp" />
+                android:layout_marginBottom="16dp"
+                android:hint="パスワードを再入力"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:endIconMode="password_toggle"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/text_secondary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <!-- Login Button -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:padding="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Terms Checkbox -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="32dp"
+                android:gravity="center_vertical">
+
+                <CheckBox
+                    android:id="@+id/cbTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/primary_color" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="利用規約とプライバシーポリシーに同意します"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+            <!-- Register Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginBottom="24dp"
-                android:text="ログイン"
+                android:text="アカウント作成"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/primary_color"
@@ -210,7 +278,7 @@
 
             </LinearLayout>
 
-            <!-- Register Link -->
+            <!-- Login Link -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,15 +289,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="アカウントをお持ちでない方は "
+                    android:text="アカウントをお持ちの方は "
                     android:textSize="14sp"
                     android:textColor="@color/text_secondary" />
 
                 <TextView
-                    android:id="@+id/tvRegisterLink"
+                    android:id="@+id/tvLoginLink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="新規登録"
+                    android:text="ログイン"
                     android:textSize="14sp"
                     android:textColor="@color/primary_color"
                     android:textStyle="bold"
