@@ -53,8 +53,13 @@ venv/
 # Docker
 .dockerignore
 
-# PostgreSQL data
-PostgreSQL/data/ 
+# PostgreSQL data and runtime files
+PostgreSQL/base/
+PostgreSQL/global/
+PostgreSQL/pg_*/
+PostgreSQL/postmaster.pid
+PostgreSQL/postmaster.opts
+PostgreSQL/*.auto.conf
 
 # nginx
 nginx/ssl/
