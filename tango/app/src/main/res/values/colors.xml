@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- App Theme Colors (Updated to match web design) -->
+    <color name="primary_color">#7C3AED</color>  <!-- Purple from web design -->
+    <color name="primary_dark">#5B21B6</color>   <!-- Darker purple -->
+    <color name="primary_light">#A855F7</color>  <!-- Lighter purple -->
+    <color name="accent_color">#3B82F6</color>   <!-- Blue accent -->
+    
+    <!-- Background Colors -->
+    <color name="background_color">#F8FAFC</color>   <!-- Light gray background -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="promo_background">#F1F5F9</color>  <!-- Promo section background -->
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#1E293B</color>      <!-- Dark text -->
+    <color name="text_secondary">#64748B</color>    <!-- Gray text -->
+    <color name="text_on_primary">#FFFFFF</color>   <!-- White text on purple -->
+    
+    <!-- Status Colors -->
+    <color name="success_color">#10B981</color>     <!-- Green -->
+    <color name="error_color">#EF4444</color>       <!-- Red -->
+    <color name="warning_color">#F59E0B</color>     <!-- Orange -->
+    
+    <!-- Border Colors -->
+    <color name="border_color">#E2E8F0</color>      <!-- Light border -->
+    <color name="input_border">#D1D5DB</color>      <!-- Input border -->
+</resources>

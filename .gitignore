@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables
+.env
+.env.local
+*.env.local
+.env.multi-site
+
+# Build outputs
+dist/
+build/
+*/dist/
+*/build/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+
+# Archives
+*.zip
+*.tar.gz
+
+# Temporary files
+*.tmp
+*.temp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Docker
+.dockerignore
+
+# PostgreSQL data
+PostgreSQL/data/ 
+
+# nginx
+nginx/ssl/
