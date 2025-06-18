@@ -83,6 +83,9 @@ class LoginActivity : AppCompatActivity() {
         // ログイン処理
         lifecycleScope.launch {
             try {
+                // 接続先URLをログに出力
+                android.util.Log.d("TangoLogin", "接続先URL: ${NetworkClient.getCurrentBaseUrl()}")
+                
                 val loginRequest = LoginRequest(username, password)
                 val response = NetworkClient.apiService.login(loginRequest)
                 
@@ -112,16 +115,23 @@ class LoginActivity : AppCompatActivity() {
                         500 -> "サーバーエラーが発生しました"
                         else -> "ログインに失敗しました (${response.code()})"
                     }
+                    android.util.Log.e("TangoLogin", "ログイン失敗: ${response.code()} - ${response.message()}")
                     Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
                 }
                 
             } catch (e: Exception) {
                 showLoading(false)
+                android.util.Log.e("TangoLogin", "ログインエラー", e)
+                
                 val errorMessage = when {
                     e.message?.contains("Unable to resolve host") == true -> 
-                        "ネットワークに接続できません。接続を確認してください。"
+                        "サーバーに接続できません。ネットワーク接続とサーバーURLを確認してください。\n接続先: ${NetworkClient.getCurrentBaseUrl()}"
                     e.message?.contains("timeout") == true -> 
-                        "接続がタイムアウトしました。再度お試しください。"
+                        "接続がタイムアウトしました。サーバーが起動しているか確認してください。"
+                    e.message?.contains("Connection refused") == true -> 
+                        "サーバーが応答しません。サーバーが起動しているか確認してください。"
+                    e.message?.contains("No address associated with hostname") == true -> 
+                        "ホスト名を解決できません。サーバーURLを確認してください。"
                     else -> "ネットワークエラーが発生しました: ${e.message}"
                 }
                 Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
