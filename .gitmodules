@@ -5,4 +5,3 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/Y0shi23/tango-backend.git
-	branch = main
