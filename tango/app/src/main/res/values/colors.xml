@@ -16,7 +16,7 @@
     
     <!-- Text Colors -->
     <color name="text_primary">#1E293B</color>      <!-- Dark text -->
-    <color name="text_secondary">#64748B</color>    <!-- Gray text -->
+    <color name="text_secondary">#475569</color>    <!-- Darker gray text for better readability -->
     <color name="text_on_primary">#FFFFFF</color>   <!-- White text on purple -->
     
     <!-- Status Colors -->

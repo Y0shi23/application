@@ -2,15 +2,17 @@ package com.tango.application
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.LinearLayout
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.tango.application.databinding.ActivityMainBinding
 import com.tango.application.ui.LoginActivity
-import com.tango.application.ui.NumericPasswordActivity
 import com.tango.application.utils.PreferenceManager
+import com.tango.application.data.LearningHistory
+import com.tango.application.data.LearningHistoryHelper
+import com.tango.application.data.LearningType
 
 class MainActivity : AppCompatActivity() {
     
@@ -19,8 +21,6 @@ class MainActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
@@ -33,67 +33,104 @@ class MainActivity : AppCompatActivity() {
         }
         
         setupUI()
-        setupClickListeners()
-        
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        loadLearningHistory()
     }
     
     private fun setupUI() {
-        // ユーザー情報を表示
+        // ユーザー名を表示
         val username = preferenceManager.getUsername() ?: "ユーザー"
-        binding.tvUsername.text = "${username}さん"
+        binding.tvUsername.text = "こんにちは、${username}さん！"
         
-        // ツールバーの設定
-        setSupportActionBar(binding.toolbar)
+        // 学習統計を更新
+        updateLearningStats()
+        
+        // メニューアイテムのクリックリスナーを設定
+        setupMenuClickListeners()
     }
     
-    private fun setupClickListeners() {
-        // ログアウトボタン
-        binding.btnLogout.setOnClickListener {
-            performLogout()
+    private fun loadLearningHistory() {
+        val histories = LearningHistoryHelper.getSampleHistory()
+        
+        // 最新の4件のみを表示
+        val recentHistories = histories.take(4)
+        
+        recentHistories.forEach { history ->
+            val historyView = createHistoryItemView(history)
+            binding.layoutHistoryContainer.addView(historyView)
         }
         
-        // クイックアクションカード
-        binding.cardStudy.setOnClickListener {
-            Toast.makeText(this, "学習機能は準備中です", Toast.LENGTH_SHORT).show()
-        }
-        
-        binding.cardProgress.setOnClickListener {
-            Toast.makeText(this, "進捗機能は準備中です", Toast.LENGTH_SHORT).show()
-        }
-        
-        binding.cardSettings.setOnClickListener {
-            // 数字パスワード設定画面へ遷移
-            val intent = Intent(this, NumericPasswordActivity::class.java)
-            startActivity(intent)
-        }
-        
-        binding.cardProfile.setOnClickListener {
-            showProfileInfo()
+        // "すべて表示" ボタンのクリックリスナー
+        binding.tvViewAllHistory.setOnClickListener {
+            Toast.makeText(this, "学習履歴の詳細画面を開発中です", Toast.LENGTH_SHORT).show()
         }
     }
     
-    private fun showProfileInfo() {
-        val username = preferenceManager.getUsername() ?: "不明"
-        val email = preferenceManager.getEmail() ?: "不明"
-        val userId = preferenceManager.getUserId()
+    private fun createHistoryItemView(history: LearningHistory): LinearLayout {
+        val inflater = LayoutInflater.from(this)
+        val historyItemView = inflater.inflate(R.layout.history_item_layout, null) as LinearLayout
         
-        val message = "ユーザーID: $userId\nユーザー名: $username\nメール: $email"
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        // アイコンの背景を設定
+        val iconBackground = historyItemView.findViewById<TextView>(R.id.historyIcon)
+        iconBackground.text = history.type.icon
+        
+        when (history.type) {
+            LearningType.NEW_WORDS -> iconBackground.setBackgroundResource(R.drawable.study_icon_bg)
+            LearningType.REVIEW -> iconBackground.setBackgroundResource(R.drawable.review_icon_bg)
+            LearningType.TEST -> iconBackground.setBackgroundResource(R.drawable.test_icon_bg)
+            LearningType.WEAKNESS_TRAINING -> iconBackground.setBackgroundResource(R.drawable.weakness_icon_bg)
+        }
+        
+        // テキストの設定
+        val titleText = historyItemView.findViewById<TextView>(R.id.historyTitle)
+        val descriptionText = historyItemView.findViewById<TextView>(R.id.historyDescription)
+        val timeText = historyItemView.findViewById<TextView>(R.id.historyTime)
+        
+        titleText.text = history.title
+        descriptionText.text = history.description
+        timeText.text = "${LearningHistoryHelper.formatTimeAgo(history.timestamp)} ${LearningHistoryHelper.formatTime(history.timestamp)}"
+        
+        // クリックリスナーを設定
+        historyItemView.setOnClickListener {
+            Toast.makeText(this, "${history.title}の詳細を表示", Toast.LENGTH_SHORT).show()
+        }
+        
+        return historyItemView
     }
     
-    private fun performLogout() {
-        // 認証情報をクリア
-        preferenceManager.clearAuthData()
+    private fun updateLearningStats() {
+        // 学習した単語数
+        binding.tvLearnedWords.text = "1,247"
         
-        Toast.makeText(this, "ログアウトしました", Toast.LENGTH_SHORT).show()
+        // 平均正答率
+        binding.tvAverageAccuracy.text = "89%"
         
-        // ログイン画面へ遷移
-        navigateToLogin()
+        // 連続学習日数
+        binding.tvConsecutiveDays.text = "23日"
+        
+        // 今月の学習時間
+        binding.tvMonthlyHours.text = "42時間"
+    }
+    
+    private fun setupMenuClickListeners() {
+        // 新規単語学習
+        binding.layoutNewWords.setOnClickListener {
+            Toast.makeText(this, "新規単語学習を開始します", Toast.LENGTH_SHORT).show()
+        }
+        
+        // 復習
+        binding.layoutReview.setOnClickListener {
+            Toast.makeText(this, "復習セッションを開始します", Toast.LENGTH_SHORT).show()
+        }
+        
+        // 弱点強化
+        binding.layoutWeakness.setOnClickListener {
+            Toast.makeText(this, "弱点強化トレーニングを開始します", Toast.LENGTH_SHORT).show()
+        }
+        
+        // 確認テスト
+        binding.layoutTest.setOnClickListener {
+            Toast.makeText(this, "確認テストを開始します", Toast.LENGTH_SHORT).show()
+        }
     }
     
     private fun navigateToLogin() {
