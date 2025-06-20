@@ -1,6 +1,8 @@
 [submodule "frontend"]
 	path = frontend
-	url = ./frontend
+	url = https://github.com/Y0shi23/tango-frontend.git
+	branch = main
 [submodule "backend"]
 	path = backend
-	url = ./backend
+	url = https://github.com/Y0shi23/tango-backend.git
+	branch = main
