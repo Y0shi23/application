@@ -21,6 +21,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 # Run stage
 FROM alpine:latest
 
+# Install timezone data
+RUN apk add --no-cache tzdata
+
 WORKDIR /app
 
 # Copy the binary from the build stage
