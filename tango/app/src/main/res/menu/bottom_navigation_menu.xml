@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="ホーム" />
+    
+    <item
+        android:id="@+id/navigation_study"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="学習" />
+    
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="履歴" />
+    
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="プロフィール" />
+</menu> 

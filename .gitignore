@@ -54,6 +54,7 @@ venv/
 .dockerignore
 
 # PostgreSQL data and runtime files
+PostgreSQL/*
 PostgreSQL/base/
 PostgreSQL/global/
 PostgreSQL/pg_*/
@@ -64,3 +65,5 @@ PostgreSQL/data/
 
 # nginx
 nginx/ssl/
+
+.gitignore

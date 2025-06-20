@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:title="ホーム" />
+        <item
+            android:id="@+id/nav_study"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="学習メニュー" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="学習履歴" />
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="統計・分析" />
+    </group>
+
+    <item android:title="設定とサポート">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="設定" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="ヘルプ" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@android:drawable/ic_menu_info_details"
+                android:title="アプリについて" />
+        </menu>
+    </item>
+
+    <item android:title="アカウント">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="プロフィール" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_menu_close_clear_cancel"
+                android:title="ログアウト" />
+        </menu>
+    </item>
+
+</menu> 
