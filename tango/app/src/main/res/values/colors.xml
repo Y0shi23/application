@@ -3,28 +3,46 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- App Theme Colors (Updated to match web design) -->
-    <color name="primary_color">#7C3AED</color>  <!-- Purple from web design -->
-    <color name="primary_dark">#5B21B6</color>   <!-- Darker purple -->
-    <color name="primary_light">#A855F7</color>  <!-- Lighter purple -->
-    <color name="accent_color">#3B82F6</color>   <!-- Blue accent -->
+    <!-- フロントエンドに合わせたカラーパレット -->
     
-    <!-- Background Colors -->
-    <color name="background_color">#F8FAFC</color>   <!-- Light gray background -->
-    <color name="card_background">#FFFFFF</color>
-    <color name="promo_background">#F1F5F9</color>  <!-- Promo section background -->
+    <!-- プライマリカラー (blue-500 to emerald-500) -->
+    <color name="primary_color">#3B82F6</color>
+    <color name="primary_dark">#1D4ED8</color>
+    <color name="primary_light">#60A5FA</color>
+    <color name="primary_gradient_start">#3B82F6</color>
+    <color name="primary_gradient_end">#10B981</color>
     
-    <!-- Text Colors -->
-    <color name="text_primary">#1E293B</color>      <!-- Dark text -->
-    <color name="text_secondary">#475569</color>    <!-- Darker gray text for better readability -->
-    <color name="text_on_primary">#FFFFFF</color>   <!-- White text on purple -->
+    <!-- セカンダリカラー (emerald-500 to green-600) -->
+    <color name="secondary_color">#10B981</color>
+    <color name="secondary_dark">#059669</color>
+    <color name="secondary_light">#34D399</color>
     
-    <!-- Status Colors -->
-    <color name="success_color">#10B981</color>     <!-- Green -->
-    <color name="error_color">#EF4444</color>       <!-- Red -->
-    <color name="warning_color">#F59E0B</color>     <!-- Orange -->
+    <!-- アクセントカラー -->
+    <color name="accent_color">#F59E0B</color>
+    <color name="accent_purple">#8B5CF6</color>
     
-    <!-- Border Colors -->
-    <color name="border_color">#E2E8F0</color>      <!-- Light border -->
-    <color name="input_border">#D1D5DB</color>      <!-- Input border -->
+    <!-- テキストカラー -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    
+    <!-- 背景色 -->
+    <color name="background_light">#F9FAFB</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_gray">#F3F4F6</color>
+    
+    <!-- ボーダーとディバイダー -->
+    <color name="border_color">#E5E7EB</color>
+    <color name="divider_color">#D1D5DB</color>
+    
+    <!-- ステータスカラー -->
+    <color name="success_color">#10B981</color>
+    <color name="warning_color">#F59E0B</color>
+    <color name="error_color">#EF4444</color>
+    <color name="error_background">#FEF2F2</color>
+    <color name="error_border">#FCA5A5</color>
+    
+    <!-- フォーカス・ホバー -->
+    <color name="focus_color">#3B82F6</color>
+    <color name="hover_color">#F3F4F6</color>
 </resources>

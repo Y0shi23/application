@@ -1,7 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Tango" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+        
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/accent_color</item>
+        <item name="colorSecondaryVariant">@color/primary_light</item>
+        <item name="colorOnSecondary">@color/text_on_primary</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">#1F2937</item>
+        <item name="colorSurface">#374151</item>
+        <item name="colorOnSurface">#F9FAFB</item>
+        
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">#F9FAFB</item>
+        <item name="android:textColorSecondary">#D1D5DB</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Night theme for dark mode -->
+    <style name="Theme.Tango" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors with darker variants for night mode -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+        
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorOnSecondary">@color/text_on_primary</item>
+        
+        <!-- Background colors for dark mode -->
+        <item name="android:colorBackground">#121212</item>
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        
+        <!-- Status bar for dark mode -->
+        <item name="android:statusBarColor">#000000</item>
     </style>
 </resources>

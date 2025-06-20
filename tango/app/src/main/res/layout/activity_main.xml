@@ -21,10 +21,10 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+        android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/primary_color"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_color"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -49,9 +49,9 @@
                     android:padding="20dp">
 
                     <!-- Logo -->
-                    <LinearLayout
+    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -65,7 +65,7 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
+        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
@@ -83,22 +83,22 @@
 
                     <!-- Simplified User Info -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvUsername"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
                             android:text="こんにちは、fun"
                             android:textColor="@color/text_primary"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+            android:textStyle="bold" />
 
-                        <TextView
+        <TextView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="@drawable/avatar_gradient_bg"
@@ -108,7 +108,7 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                    </LinearLayout>
+    </LinearLayout>
 
                 </LinearLayout>
 
@@ -226,22 +226,22 @@
                                     android:textColor="@color/text_secondary"
                                     android:textSize="14sp" />
 
-                            </LinearLayout>
+                </LinearLayout>
 
-                        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="0dp"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
                             android:layout_height="180dp"
                             android:layout_marginStart="6dp"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="12dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="12dp"
                             app:cardElevation="2dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                                 android:padding="22dp"
                                 android:gravity="top"
                                 android:layout_gravity="center">
@@ -257,22 +257,22 @@
                                     android:layout_marginTop="18dp"
                                     android:layout_marginBottom="14dp"
                                     android:background="@drawable/green_gradient_bg"
-                                    android:gravity="center"
+                    android:gravity="center"
                                     android:text="🎯"
                                     android:textSize="16sp" />
 
-                                <TextView
+                    <TextView
                                     android:id="@+id/tvAverageAccuracy"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
                                     android:text="89%"
                                     android:textColor="@color/text_primary"
                                     android:textSize="24sp"
                                     android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="bottom"
@@ -280,30 +280,30 @@
                                     android:textColor="@color/text_secondary"
                                     android:textSize="14sp" />
 
-                            </LinearLayout>
+                </LinearLayout>
 
-                        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-                    </LinearLayout>
+        </LinearLayout>
 
                     <!-- Row 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="0dp"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
                             android:layout_height="180dp"
                             android:layout_marginEnd="6dp"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="12dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="12dp"
                             app:cardElevation="2dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                                 android:padding="22dp"
                                 android:gravity="top"
                                 android:layout_gravity="center">
@@ -319,22 +319,22 @@
                                     android:layout_marginTop="18dp"
                                     android:layout_marginBottom="14dp"
                                     android:background="@drawable/orange_gradient_bg"
-                                    android:gravity="center"
+                    android:gravity="center"
                                     android:text="⏱️"
                                     android:textSize="16sp" />
 
-                                <TextView
+                    <TextView
                                     android:id="@+id/tvConsecutiveDays"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
                                     android:text="23日"
                                     android:textColor="@color/text_primary"
                                     android:textSize="24sp"
                                     android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="bottom"
@@ -342,22 +342,22 @@
                                     android:textColor="@color/text_secondary"
                                     android:textSize="14sp" />
 
-                            </LinearLayout>
+                </LinearLayout>
 
-                        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="0dp"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
                             android:layout_height="180dp"
                             android:layout_marginStart="6dp"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="12dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="12dp"
                             app:cardElevation="2dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                                 android:padding="22dp"
                                 android:gravity="top"
                                 android:layout_gravity="center">
@@ -373,22 +373,22 @@
                                     android:layout_marginTop="18dp"
                                     android:layout_marginBottom="14dp"
                                     android:background="@drawable/purple_gradient_bg"
-                                    android:gravity="center"
+                    android:gravity="center"
                                     android:text="🔥"
                                     android:textSize="16sp" />
 
-                                <TextView
+                    <TextView
                                     android:id="@+id/tvMonthlyHours"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
                                     android:text="42時間"
                                     android:textColor="@color/text_primary"
                                     android:textSize="24sp"
                                     android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="bottom"
@@ -396,13 +396,13 @@
                                     android:textColor="@color/text_secondary"
                                     android:textSize="14sp" />
 
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                    </LinearLayout>
-
                 </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
                 <!-- Today's Study Menu -->
                 <com.google.android.material.card.MaterialCardView

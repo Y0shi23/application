@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Pressed state -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/primary_dark"
+                android:endColor="@color/secondary_dark"
+                android:angle="45" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    
+    <!-- Focused state -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/primary_gradient_start"
+                android:endColor="@color/primary_gradient_end"
+                android:angle="45" />
+            <corners android:radius="8dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/focus_color" />
+        </shape>
+    </item>
+    
+    <!-- Disabled state -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#9CA3AF"
+                android:endColor="#6B7280"
+                android:angle="45" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    
+    <!-- Default state -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/primary_gradient_start"
+                android:endColor="@color/primary_gradient_end"
+                android:angle="45" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</selector> 
