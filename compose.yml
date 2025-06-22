@@ -4,13 +4,23 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    container_name: tango-frontend
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend/app/application:/app/application
+      - ./frontend/app/application/src:/app/application/src
+      - ./frontend/app/application/public:/app/application/public
+      - ./frontend/app/application/package.json:/app/application/package.json
+      - ./frontend/app/application/package-lock.json:/app/application/package-lock.json
+      - ./frontend/app/application/next.config.ts:/app/application/next.config.ts
+      - ./frontend/app/application/tsconfig.json:/app/application/tsconfig.json
+      - ./frontend/app/application/postcss.config.mjs:/app/application/postcss.config.mjs
+      - ./frontend/app/application/eslint.config.mjs:/app/application/eslint.config.mjs
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    working_dir: /app/application
+    command: ["npm", "run", "dev"]
     networks:
       - mynetwork
     expose:
@@ -23,6 +33,8 @@ services:
       retries: 3
       start_period: 60s
       disable: true
+    depends_on:
+      - backend
   
   # tango.fumi042-server.top用のバックエンド（既存）
   backend:
