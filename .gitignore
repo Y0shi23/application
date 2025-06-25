@@ -68,3 +68,4 @@ PostgreSQL/data/
 nginx/ssl/
 
 .gitignore
+go/
